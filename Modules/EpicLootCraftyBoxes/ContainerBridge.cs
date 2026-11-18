@@ -111,7 +111,7 @@ internal static class ContainerBridge
             Source source = new() { Container = container, Inventory = inventory };
             if (container != null)
             {
-                Snapshot snapshot = _snapshots.GetValue(container, _ => new Snapshot { Inventory = inventory });
+                Snapshot snapshot = _snapshots.GetValue(container, static _ => new Snapshot());
                 ZNetView view = _view(container);
                 if (!snapshot.Known && view != null && view.IsValid() && !_loading(container) &&
                     _loadedRevision(container) == view.GetZDO().DataRevision)
@@ -281,7 +281,12 @@ internal static class ContainerBridge
     }
 
     private static bool Contains(Inventory inventory, Item item) => Contains(inventory.GetAllItems(), item);
-    private static bool Contains(List<Item> items, Item item) => items.Exists(candidate => ReferenceEquals(candidate, item));
+    private static bool Contains(List<Item> items, Item item)
+    {
+        for (int i = 0; i < items.Count; i++)
+            if (ReferenceEquals(items[i], item)) return true;
+        return false;
+    }
 
     internal static void Report(string message, Exception? error = null)
     {
