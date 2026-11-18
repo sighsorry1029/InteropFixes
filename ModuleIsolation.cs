@@ -13,6 +13,8 @@ internal static class ModuleIsolation
         foreach (string guid in required)
             if (!Chainloader.PluginInfos.ContainsKey(guid)) return false;
 
+        if (legacyGuid == null && !checkOldBlasted) return true;
+
         // Do not stack a second implementation over complete or partially installed legacy hooks.
         if (legacyGuid != null && Chainloader.PluginInfos.ContainsKey(legacyGuid))
         {
