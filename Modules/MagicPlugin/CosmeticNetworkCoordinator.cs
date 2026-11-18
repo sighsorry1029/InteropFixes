@@ -174,11 +174,7 @@ internal static class CosmeticNetworkCoordinator
             }
             else
             {
-                _session = 0;
-                _clientGrant = 0;
-                _lastGrantRevision = 0;
-                Participants.Clear();
-                RecentlyLeft.Clear();
+                ClearSessionGrant();
             }
         }
         catch (Exception ex) { DisableTransmission(ex); }
@@ -228,11 +224,7 @@ internal static class CosmeticNetworkCoordinator
             }
             else
             {
-                _session = 0;
-                _clientGrant = 0;
-                _lastGrantRevision = 0;
-                Participants.Clear();
-                RecentlyLeft.Clear();
+                ClearSessionGrant();
             }
         }
         catch (Exception ex) { DisableTransmission(ex); }
@@ -444,15 +436,20 @@ internal static class CosmeticNetworkCoordinator
             catch (Exception ex) { InteropFixesPlugin.ModLogger.LogWarning("Could not remove own cosmetic RPC: " + ex.Message); }
         }
         Connections.Clear();
-        Participants.Clear();
-        RecentlyLeft.Clear();
         _net = null;
-        _session = 0;
-        _clientGrant = 0;
-        _lastGrantRevision = 0;
+        ClearSessionGrant();
         _wireRevision = 0;
         _warned = false;
         _transmissionFailed = false;
+    }
+
+    private static void ClearSessionGrant()
+    {
+        _session = 0;
+        _clientGrant = 0;
+        _lastGrantRevision = 0;
+        Participants.Clear();
+        RecentlyLeft.Clear();
     }
 
     private static void DisableTransmission(Exception error)
