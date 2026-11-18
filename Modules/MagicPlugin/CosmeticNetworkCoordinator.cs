@@ -14,7 +14,6 @@ internal static class CosmeticNetworkCoordinator
     // Optional installation uses its own readiness contract, independent of the
     // former mandatory ServerSync handshake. Old coordinators cannot grant v2 work.
     internal const int Protocol = 2;
-    private const int AllMask = 127;
     private const int MaxParticipants = 128;
     private const string HelloRpc = InteropFixesPlugin.ModGuid + ".Cosmetics.Hello.v2";
     private const string ReportRpc = InteropFixesPlugin.ModGuid + ".Cosmetics.Report.v2";
@@ -93,7 +92,7 @@ internal static class CosmeticNetworkCoordinator
     internal static bool CanOptimize(int mask)
     {
         if (!_installed || _transmissionFailed ||
-            mask <= 0 || (mask & ~AllMask) != 0 || _net == null ||
+            mask == 0 || !CosmeticAgreement.IsValidMask(mask) || _net == null ||
             !ReferenceEquals(_net, ZNet.instance) || !_sceneReady || !ReferenceEquals(_scene, ZNetScene.instance) ||
             (_localMask & mask) != mask || !InteropFixesPlugin.CosmeticRuntimeActive) return false;
         if (_net.IsServer()) return Connections.Count < MaxParticipants && (Agreement.Mask & mask) == mask;
@@ -112,7 +111,7 @@ internal static class CosmeticNetworkCoordinator
 
     internal static void SetLocalCapabilities(int mask)
     {
-        _localMask = mask >= 0 && (mask & ~AllMask) == 0 ? mask : 0;
+        _localMask = CosmeticAgreement.IsValidMask(mask) ? mask : 0;
         RefreshReadiness();
     }
 
@@ -318,7 +317,8 @@ internal static class CosmeticNetworkCoordinator
             long revision = message.ReadLong();
             int mask = message.ReadInt();
             bool ready = message.ReadBool();
-            if (message.GetPos() != message.Size() || revision <= connection.ReportRevision || mask < 0 || (mask & ~AllMask) != 0) return;
+            if (message.GetPos() != message.Size() || revision <= connection.ReportRevision ||
+                !CosmeticAgreement.IsValidMask(mask)) return;
             connection.ReportRevision = revision;
             if (!connection.Peer.IsReady())
             {
@@ -344,7 +344,8 @@ internal static class CosmeticNetworkCoordinator
             if (!ReadHeader(message, connection)) return;
             long revision = message.ReadLong();
             int mask = message.ReadInt(), count = message.ReadInt();
-            if (revision <= _lastGrantRevision || revision <= 0 || mask < 0 || (mask & ~AllMask) != 0 || count < 1 || count > MaxParticipants) return;
+            if (revision <= _lastGrantRevision || revision <= 0 || !CosmeticAgreement.IsValidMask(mask) ||
+                count < 1 || count > MaxParticipants) return;
             var participants = new HashSet<long>();
             for (int i = 0; i < count; i++)
             {

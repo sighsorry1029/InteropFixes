@@ -38,7 +38,7 @@ internal sealed class CosmeticAgreement
 
     internal void SetLocal(int mask, bool ready)
     {
-        if (!ValidMask(mask))
+        if (!IsValidMask(mask))
         {
             mask = 0;
             ready = false;
@@ -65,7 +65,7 @@ internal sealed class CosmeticAgreement
 
     internal bool Report(long token, long session, long reportRevision, int mask, bool ready)
     {
-        if (session <= 0 || session != Session || reportRevision <= 0 || !ValidMask(mask) ||
+        if (session <= 0 || session != Session || reportRevision <= 0 || !IsValidMask(mask) ||
             !_peers.TryGetValue(token, out Peer? peer) || reportRevision <= peer.ReportRevision)
             return false;
         peer.ReportRevision = reportRevision;
@@ -92,5 +92,5 @@ internal sealed class CosmeticAgreement
         Revision = checked(Revision + 1);
     }
 
-    private static bool ValidMask(int mask) => mask >= 0 && (mask & ~AllMask) == 0;
+    internal static bool IsValidMask(int mask) => mask >= 0 && (mask & ~AllMask) == 0;
 }
