@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <GameManaged Condition="'$(GameManaged)' == ''">C:/Users/blizz/.codex/references/valheim/snapshots/client-b26249040-windows-x64-20261029T094619Z-depot-restored/original/valheim_Data/Managed</GameManaged>
+    <BepCore Condition="'$(BepCore)' == ''">C:/Program Files (x86)/Steam/steamapps/common/Valheim/BepInEx/core</BepCore>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Modules/MagicPlugin/MagicPluginCosmeticZdoPrevention.cs" Link="MagicPluginCosmeticZdoPrevention.cs" />
+    <Reference Include="assembly_valheim"><HintPath>$(GameManaged)/assembly_valheim.dll</HintPath></Reference>
+    <Reference Include="assembly_utils"><HintPath>$(GameManaged)/assembly_utils.dll</HintPath></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(GameManaged)/UnityEngine.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameManaged)/UnityEngine.CoreModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.PhysicsModule"><HintPath>$(GameManaged)/UnityEngine.PhysicsModule.dll</HintPath></Reference>
+    <Reference Include="BepInEx"><HintPath>$(BepCore)/BepInEx.dll</HintPath></Reference>
+    <Reference Include="0Harmony"><HintPath>$(BepCore)/0Harmony.dll</HintPath></Reference>
+    <Reference Include="Mono.Cecil"><HintPath>$(BepCore)/Mono.Cecil.dll</HintPath></Reference>
+    <Reference Include="MonoMod.Utils"><HintPath>$(BepCore)/MonoMod.Utils.dll</HintPath></Reference>
+    <Reference Include="MonoMod.RuntimeDetour"><HintPath>$(BepCore)/MonoMod.RuntimeDetour.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

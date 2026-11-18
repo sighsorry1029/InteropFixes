@@ -2,8 +2,8 @@
   "name": "InteropFixes",
   "version_number": "1.0.3",
   "website_url": "https://discord.gg/jkcJCq2sK5",
-  "description": "Standalone runtime fixes for MagicPlugin projectiles and summon teleporting, plus safe creature StatusEffect teardown and Character removal bookkeeping.",
+  "description": "Compatibility fixes for MagicPlugin, VNEI item lookup and EpicLoot/AzuCraftyBoxes container inventory saving.",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2333"
+    "denikson-BepInExPack_Valheim-5.4.2360"
   ]
 }

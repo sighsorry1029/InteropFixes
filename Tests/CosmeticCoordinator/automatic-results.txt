@@ -1,0 +1,1 @@
+60 cosmetic coordinator checks passed using isolated endpoints and serialized RPC packets. Unity/Harmony/transport boundaries were simulated.

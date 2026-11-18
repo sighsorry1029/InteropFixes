@@ -1,0 +1,70 @@
+diff --git a/CharacterLifecycleCompatibility.cs b/CharacterLifecycleCompatibility.cs
+index 14cfb54..f66147d 100644
+--- a/CharacterLifecycleCompatibility.cs
++++ b/CharacterLifecycleCompatibility.cs
+@@ -24,7 +24,6 @@ internal static class CharacterLifecycleCompatibility
+         MethodInfo? removeStartEffects = AccessTools.DeclaredMethod(typeof(StatusEffect), "RemoveStartEffects");
+         MethodInfo? characterOnDestroy = AccessTools.DeclaredMethod(typeof(Character), "OnDestroy");
+         MethodInfo? sceneOnDestroy = AccessTools.DeclaredMethod(typeof(ZNetScene), "OnDestroy");
+-        FieldInfo? statusEffectCharacter = AccessTools.Field(typeof(StatusEffect), "m_character");
+         FieldInfo? startEffectInstances = AccessTools.Field(typeof(StatusEffect), "m_startEffectInstances");
+         FieldInfo? characterSeMan = AccessTools.Field(typeof(Character), "m_seman");
+ 
+@@ -38,7 +37,6 @@ internal static class CharacterLifecycleCompatibility
+             removeStartEffects == null ||
+             characterOnDestroy == null ||
+             sceneOnDestroy == null ||
+-            statusEffectCharacter == null ||
+             startEffectInstances == null ||
+             characterSeMan == null ||
+             trackPrefix == null ||
+@@ -127,23 +125,17 @@ internal static class CharacterLifecycleCompatibility
+         CreatureRemovalTracker.Track(__0);
+     }
+ 
+-    private static bool RemoveStartEffectsPrefix(
+-        Character ___m_character,
+-        ref GameObject[]? ___m_startEffectInstances)
++    private static void RemoveStartEffectsPrefix(ref GameObject[]? ___m_startEffectInstances)
+     {
+-        if (!CreatureRemovalTracker.IsPending(___m_character))
+-        {
+-            return true;
+-        }
+-
+         GameObject[]? startEffectInstances = ___m_startEffectInstances;
+         if (startEffectInstances == null || !ZNetScene.instance)
+         {
+-            return false;
++            return;
+         }
+ 
+-        foreach (GameObject effectInstance in startEffectInstances)
++        for (int i = 0; i < startEffectInstances.Length; i++)
+         {
++            GameObject effectInstance = startEffectInstances[i];
+             if (!effectInstance)
+             {
+                 continue;
+@@ -152,17 +144,12 @@ internal static class CharacterLifecycleCompatibility
+             ZNetView? view = effectInstance.GetComponent<ZNetView>();
+             if (view && view.IsValid())
+             {
+-                view.ClaimOwnership();
+-                view.Destroy();
+-            }
+-            else
+-            {
+-                UnityEngine.Object.Destroy(effectInstance);
++                continue;
+             }
+-        }
+ 
+-        ___m_startEffectInstances = null;
+-        return false;
++            startEffectInstances[i] = null!;
++            UnityEngine.Object.Destroy(effectInstance);
++        }
+     }
+ 
+     private static bool CharacterOnDestroyPrefix(Character __instance, SEMan? ___m_seman)

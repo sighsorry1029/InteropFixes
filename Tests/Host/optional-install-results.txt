@@ -1,0 +1,4 @@
+[mono-x64] pointer-size=8 runtime=C:\Program Files\Unity 6000.0.46f1\Editor\Data\MonoBleedingEdge\EmbedRuntime\mono-2.0-sgen.dll
+﻿PASS: 38 final-DLL isolation/metadata/Harmony assertions. Unity plugin startup/gameplay not run.
+﻿[mono-x64] mono_main returned after runtime cleanup: exit=0
+NativeHostExit=0

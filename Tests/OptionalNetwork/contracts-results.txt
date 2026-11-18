@@ -1,0 +1,4 @@
+Original coordinator contracts checked: C:\Users\blizz\.codex\references\valheim\snapshots\client-b26249040-windows-x64-20261029T094619Z-depot-restored\original\valheim_Data\Managed\assembly_valheim.dll
+Original coordinator contracts checked: C:\Users\blizz\.codex\references\valheim\snapshots\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\original\valheim_server_Data\Managed\assembly_valheim.dll
+Artifact SHA-256: A076F388D486F751D1391D239A253F6D9089F9898A3F2741D8F83CA20A035E64
+PASS: 103 optional-install artifact and original coordinator contracts. Metadata/IL inspection only; no live game or network execution.

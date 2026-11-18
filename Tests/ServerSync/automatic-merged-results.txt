@@ -1,0 +1,3 @@
+Original coordinator contracts checked: C:\Users\blizz\.codex\references\valheim\snapshots\client-b26249040-windows-x64-20261029T094619Z-depot-restored\original\valheim_Data\Managed\assembly_valheim.dll
+Original coordinator contracts checked: C:\Users\blizz\.codex\references\valheim\snapshots\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\original\valheim_server_Data\Managed\assembly_valheim.dll
+PASS: 125 final merged ServerSync provenance, authority/version and core IL contracts. Static inspection only; no game/network execution.

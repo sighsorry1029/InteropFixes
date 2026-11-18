@@ -1,0 +1,1 @@
+71 cosmetic agreement checks passed. Pure server readiness/capability state; no transport/game timing was simulated.

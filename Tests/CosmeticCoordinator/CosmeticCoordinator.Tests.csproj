@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs;Endpoint.cs;Stubs.cs" />
+    <Compile Include="../../Modules/MagicPlugin/CosmeticAgreement.cs" Link="Production/CosmeticAgreement.cs" />
+    <Compile Include="../../Modules/MagicPlugin/CosmeticNetworkCoordinator.cs" Link="Production/CosmeticNetworkCoordinator.cs" />
+  </ItemGroup>
+</Project>

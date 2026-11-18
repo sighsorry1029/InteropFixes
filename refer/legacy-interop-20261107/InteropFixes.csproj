@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="environment.props"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{6A96658A-D69D-4C02-A219-9D7BAE4299A8}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>InteropFixes</RootNamespace>
+        <AssemblyName>InteropFixes</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>preview</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>portable</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>portable</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>$(BepInExPath)\core\0Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="assembly_valheim">
+            <HintPath>$(PublicizedAssembliesPath)\assembly_valheim_publicized.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="BepInEx">
+            <HintPath>$(BepInExPath)\core\BepInEx.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="UnityEngine">
+            <HintPath>$(CorlibPath)\UnityEngine.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(CorlibPath)\UnityEngine.CoreModule.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="CharacterLifecycleCompatibility.cs"/>
+        <Compile Include="InteropFixesPlugin.cs"/>
+        <Compile Include="MagicPluginCompatibility.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="README.md"/>
+        <Content Include="Thunderstore\CHANGELOG.md"/>
+        <Content Include="Thunderstore\icon.png"/>
+        <Content Include="Thunderstore\manifest.json"/>
+        <Content Include="UpdateManifest.ps1"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <Target Name="GetAssemblyVersion">
+        <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+            <Output TaskParameter="Assemblies" ItemName="PackageAssemblyIdentity"/>
+        </GetAssemblyIdentity>
+        <ItemGroup>
+            <PackageAssemblyVersions Include="@(PackageAssemblyIdentity->'%(Version)')"/>
+        </ItemGroup>
+        <Error Text="Failed to get the InteropFixes assembly version." Condition="'%(PackageAssemblyVersions.Identity)' == ''"/>
+        <PropertyGroup>
+            <PackageAssemblyVersion>%(PackageAssemblyVersions.Identity)</PackageAssemblyVersion>
+            <PackageMajor>$(PackageAssemblyVersion.Split('.')[0])</PackageMajor>
+            <PackageMinor>$(PackageAssemblyVersion.Split('.')[1])</PackageMinor>
+            <PackagePatch>$(PackageAssemblyVersion.Split('.')[2])</PackagePatch>
+            <PackageVersion>$(PackageMajor).$(PackageMinor).$(PackagePatch)</PackageVersion>
+            <PackageName>$(AssemblyName)_v$(PackageVersion)</PackageName>
+            <ThunderstorePackageRoot>$(ProjectDir)Thunderstore</ThunderstorePackageRoot>
+            <ThunderstoreStagingDir>$(IntermediateOutputPath)Thunderstore\$(PackageName)</ThunderstoreStagingDir>
+        </PropertyGroup>
+    </Target>
+    <Target
+        Name="UpdateManifestVersion"
+        DependsOnTargets="GetAssemblyVersion"
+        Condition=" ('$(Configuration)|$(Platform)' == 'Release|AnyCPU') And ('$(OS)' == 'Windows_NT') ">
+        <Error Text="manifest.json not found in Thunderstore directory." Condition="!Exists('$(ThunderstorePackageRoot)\manifest.json')"/>
+        <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)UpdateManifest.ps1&quot; -manifestFile &quot;$(ThunderstorePackageRoot)\manifest.json&quot; -versionString &quot;$(PackageVersion)&quot;"/>
+    </Target>
+    <Target
+        Name="MakeThunderstorePackage"
+        AfterTargets="Build"
+        DependsOnTargets="GetAssemblyVersion;UpdateManifestVersion"
+        Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <Error Text="InteropFixes.dll not found in the Release output directory." Condition="!Exists('$(TargetPath)')"/>
+        <Error Text="README.md not found in the project root." Condition="!Exists('$(ProjectDir)README.md')"/>
+        <Error Text="CHANGELOG.md not found in the Thunderstore directory." Condition="!Exists('$(ThunderstorePackageRoot)\CHANGELOG.md')"/>
+        <Error Text="manifest.json not found in the Thunderstore directory." Condition="!Exists('$(ThunderstorePackageRoot)\manifest.json')"/>
+        <Error Text="icon.png not found in the Thunderstore directory. Thunderstore requires a 256x256 PNG." Condition="!Exists('$(ThunderstorePackageRoot)\icon.png')"/>
+        <ItemGroup>
+            <ThunderstorePackageFiles Include="$(TargetPath)"/>
+            <ThunderstorePackageFiles Include="$(ProjectDir)README.md"/>
+            <ThunderstorePackageFiles Include="$(ThunderstorePackageRoot)\CHANGELOG.md"/>
+            <ThunderstorePackageFiles Include="$(ThunderstorePackageRoot)\manifest.json"/>
+            <ThunderstorePackageFiles Include="$(ThunderstorePackageRoot)\icon.png"/>
+        </ItemGroup>
+        <RemoveDir Directories="$(ThunderstoreStagingDir)" Condition="Exists('$(ThunderstoreStagingDir)')"/>
+        <MakeDir Directories="$(ThunderstoreStagingDir)"/>
+        <Copy SourceFiles="@(ThunderstorePackageFiles)" DestinationFolder="$(ThunderstoreStagingDir)"/>
+        <ZipDirectory
+            SourceDirectory="$(ThunderstoreStagingDir)"
+            DestinationFile="$(ThunderstorePackageRoot)\$(PackageName).zip"
+            Overwrite="true"/>
+        <RemoveDir Directories="$(ThunderstoreStagingDir)"/>
+    </Target>
+</Project>

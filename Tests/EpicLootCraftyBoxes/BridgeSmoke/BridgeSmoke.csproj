@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../Modules/EpicLootCraftyBoxes/ContainerBridge.cs" Link="Production/ContainerBridge.cs" />
+    <Compile Include="../../../Modules/EpicLootCraftyBoxes/BridgeContracts.cs" Link="Production/BridgeContracts.cs" />
+    <Compile Include="../../../Modules/EpicLootCraftyBoxes/EpicLootCraftyBoxesModule.cs" Link="Production/EpicLootCraftyBoxesModule.cs" />
+  </ItemGroup>
+</Project>
+

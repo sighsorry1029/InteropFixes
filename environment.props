@@ -1,8 +1,8 @@
 <Project>
-    <PropertyGroup>
-        <ValheimGamePath>C:\Program Files (x86)\Steam\steamapps\common\Valheim</ValheimGamePath>
-        <BepInExPath>$(ValheimGamePath)\BepInEx</BepInExPath>
-        <CorlibPath>$(ValheimGamePath)\valheim_Data\Managed</CorlibPath>
-        <PublicizedAssembliesPath>$(ValheimGamePath)\valheim_Data\Managed\publicized_assemblies</PublicizedAssembliesPath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <ValheimGamePath Condition="'$(ValheimGamePath)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Valheim</ValheimGamePath>
+    <BepInExPath Condition="'$(BepInExPath)' == ''">$(ValheimGamePath)\BepInEx</BepInExPath>
+    <!-- Original game assemblies only. No publicizer or publicized reference fallback. -->
+    <CorlibPath Condition="'$(CorlibPath)' == ''">$(ValheimGamePath)\valheim_Data\Managed</CorlibPath>
+  </PropertyGroup>
 </Project>

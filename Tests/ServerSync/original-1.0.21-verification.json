@@ -1,0 +1,1578 @@
+{
+  "Schema": "interopfixes-serversync-original-verification-summary-v1",
+  "GeneratedAtUtc": "2026-11-07T00:25:08.3656436Z",
+  "Verifier": "C:/Users/blizz/.codex/references/valheim/integrations/serversync/versions/valheim-1.0.7-r1/verification/ServerSync.Verify.csproj",
+  "VerificationRuntime": ".NET 9.0.17",
+  "CecilVersion": "0.11.6.0",
+  "Candidate": {
+    "path": "C:\\Users\\blizz\\RiderProjects\\InteropFixes\\Libs\\ServerSync.dll",
+    "bytes": 49664,
+    "sha256": "b4dd786997f4e90d770f09ef3e9d64154754fe7e8edfb4841795751895b35846"
+  },
+  "Api": {
+    "baselineIdentity": "ServerSync, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "candidateIdentity": "ServerSync, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "baselineEntries": 73,
+    "candidateEntries": 73,
+    "removedOrChanged": [],
+    "addedOrChanged": [],
+    "exactMatch": true
+  },
+  "Targets": [
+    {
+      "Label": "client",
+      "ManagedDirectory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed",
+      "OriginalGameAssembly": {
+        "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+        "bytes": 2577920,
+        "sha256": "9f959c0396ec4240d47fcbe5d0d062c428cc627244506db5ea567f9d77b2b769"
+      },
+      "DirectReferenceCount": 1193,
+      "HarmonyTargets": [
+        {
+          "patch": "System.Void ServerSync.ConfigSync/SnatchCurrentlyHandlingRPC::Prefix(ZRpc)",
+          "target": "System.Void ZRpc::HandlePackage(ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/RegisterRPCPatch::Postfix(ZNet)",
+          "target": "System.Void ZNet::Awake()",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/RegisterClientRPCPatch::Postfix(ZNet,ZNetPeer)",
+          "target": "System.Void ZNet::OnNewConnection(ZNetPeer)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            },
+            {
+              "name": "peer",
+              "type": "ZNetPeer",
+              "expected": "ZNetPeer"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/ResetConfigsOnShutdown::Postfix()",
+          "target": "System.Void ZNet::Shutdown(System.Boolean)",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": []
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)",
+          "target": "System.Void ZNet::RPC_PeerInfo(ZRpc,ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__state",
+              "status": "harmony-special-parameter-not-fully-validated",
+              "type": "System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            },
+            {
+              "name": "rpc",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Postfix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>,ZNet,ZRpc)",
+          "target": "System.Void ZNet::RPC_PeerInfo(ZRpc,ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__state",
+              "status": "harmony-special-parameter-not-fully-validated",
+              "type": "System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            },
+            {
+              "name": "rpc",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            }
+          ]
+        },
+        {
+          "patch": "System.Boolean ServerSync.ConfigSync/PreventSavingServerInfo::Prefix(BepInEx.Configuration.ConfigEntryBase,System.String&)",
+          "target": "System.String BepInEx.Configuration.ConfigEntryBase::GetSerializedValue()",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "BepInEx.Configuration.ConfigEntryBase",
+              "expected": "BepInEx.Configuration.ConfigEntryBase"
+            },
+            {
+              "name": "__result",
+              "type": "System.String",
+              "expected": "System.String"
+            }
+          ]
+        },
+        {
+          "patch": "System.Boolean ServerSync.ConfigSync/PreventConfigRereadChangingValues::Prefix(BepInEx.Configuration.ConfigEntryBase,System.String)",
+          "target": "System.Void BepInEx.Configuration.ConfigEntryBase::SetSerializedValue(System.String)",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "BepInEx.Configuration.ConfigEntryBase",
+              "expected": "BepInEx.Configuration.ConfigEntryBase"
+            },
+            {
+              "name": "value",
+              "type": "System.String",
+              "expected": "System.String"
+            }
+          ]
+        },
+        {
+          "patch": "System.Boolean ServerSync.VersionCheck::RPC_PeerInfo(ZRpc,ZNet)",
+          "target": "System.Void ZNet::RPC_PeerInfo(ZRpc,ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "rpc",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.VersionCheck::RegisterAndCheckVersion(ZNetPeer,ZNet)",
+          "target": "System.Void ZNet::OnNewConnection(ZNetPeer)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "peer",
+              "type": "ZNetPeer",
+              "expected": "ZNetPeer"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.VersionCheck::RemoveDisconnected(ZNetPeer,ZNet)",
+          "target": "System.Void ZNet::Disconnect(ZNetPeer)",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "peer",
+              "type": "ZNetPeer",
+              "expected": "ZNetPeer"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.VersionCheck::ShowConnectionError(FejdStartup)",
+          "target": "System.Void FejdStartup::ShowConnectError(ZNet/ConnectionStatus)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "FejdStartup",
+              "expected": "FejdStartup"
+            }
+          ]
+        }
+      ],
+      "KnownReflectionTargets": [
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "m_adminList",
+            "ValueType": "SyncedList",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "SyncedList ZNet::m_adminList",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "GetPeer",
+            "ValueType": "ZNetPeer",
+            "Static": false,
+            "Parameters": "ZRpc"
+          },
+          "actual": "ZNetPeer ZNet::GetPeer(ZRpc)",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, HideBySig",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "Awake",
+            "ValueType": "System.Void",
+            "Static": false,
+            "Parameters": ""
+          },
+          "actual": "System.Void ZNet::Awake()",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, HideBySig",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "m_connectionStatus",
+            "ValueType": "ZNet/ConnectionStatus",
+            "Static": true,
+            "Parameters": null
+          },
+          "actual": "ZNet/ConnectionStatus ZNet::m_connectionStatus",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, Static",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRoutedRpc",
+            "Name": "m_peers",
+            "ValueType": "System.Collections.Generic.List`1<ZNetPeer>",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Collections.Generic.List`1<ZNetPeer> ZRoutedRpc::m_peers",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRpc",
+            "Name": "m_socket",
+            "ValueType": "ISocket",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "ISocket ZRpc::m_socket",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNetPeer",
+            "Name": "m_socket",
+            "ValueType": "ISocket",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "ISocket ZNetPeer::m_socket",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Public",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRpc",
+            "Name": "m_functions",
+            "ValueType": "System.Collections.Generic.Dictionary`2<System.Int32,ZRpc/RpcMethodBase>",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Collections.Generic.Dictionary`2<System.Int32,ZRpc/RpcMethodBase> ZRpc::m_functions",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRpc/RpcMethod`1",
+            "Name": "m_action",
+            "ValueType": "System.Action`2<ZRpc,T>",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Action`2<ZRpc,T> ZRpc/RpcMethod`1::m_action",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZPlayFabSocket",
+            "Name": "m_remotePlayerId",
+            "ValueType": "System.String",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.String ZPlayFabSocket::m_remotePlayerId",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\assembly_valheim.dll",
+          "access": "Public, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "BepInEx",
+            "Type": "BepInEx.Configuration.ConfigDescription",
+            "Name": "<Tags>k__BackingField",
+            "ValueType": "System.Object[]",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Object[] BepInEx.Configuration.ConfigDescription::<Tags>k__BackingField",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "BepInEx",
+            "Type": "BepInEx.ThreadingHelper",
+            "Name": "StartSyncInvoke",
+            "ValueType": "System.Void",
+            "Static": false,
+            "Parameters": "System.Action"
+          },
+          "actual": "System.Void BepInEx.ThreadingHelper::StartSyncInvoke(System.Action)",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "access": "Public, HideBySig",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "mscorlib",
+            "Type": "System.Reflection.ParameterInfo",
+            "Name": "ClassImpl",
+            "ValueType": "System.Type",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Type System.Reflection.ParameterInfo::ClassImpl",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\mscorlib.dll",
+          "access": "Family",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "mscorlib",
+            "Type": "System.Collections.Generic.KeyValuePair`2",
+            "Name": "key",
+            "ValueType": "TKey",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "TKey System.Collections.Generic.KeyValuePair`2::key",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\mscorlib.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "mscorlib",
+            "Type": "System.Collections.Generic.KeyValuePair`2",
+            "Name": "value",
+            "ValueType": "TValue",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "TValue System.Collections.Generic.KeyValuePair`2::value",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\valheim_Data\\Managed\\mscorlib.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        }
+      ],
+      "ReflectionCallSites": [
+        {
+          "location": "ServerSync.SyncedConfigEntry`1<T> ServerSync.ConfigSync::AddConfigEntry(BepInEx.Configuration.ConfigEntry`1<T>)@IL_0061",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "<Tags>k__BackingField"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "ServerSync.ConfigSync/ParsedConfigs ServerSync.ConfigSync::ReadConfigsFromPackage(ZPackage)@IL_00e9",
+          "call": "System.Type System.Type::GetType(System.String)",
+          "nearbyStrings": [],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Collections.IEnumerator ServerSync.ConfigSync::sendZPackage(System.Int64,ZPackage)@IL_003c",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_peers"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync::AddValueToZPackage(ZPackage,System.Object)@IL_00c2",
+          "call": "System.Reflection.FieldInfo[] System.Type::GetFields(System.Reflection.BindingFlags)",
+          "nearbyStrings": [],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_002b",
+          "call": "System.Reflection.FieldInfo[] System.Type::GetFields(System.Reflection.BindingFlags)",
+          "nearbyStrings": [],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_0179",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "key"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_0189",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "key",
+            "value"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_023b",
+          "call": "System.Reflection.MethodInfo System.Type::GetMethod(System.String)",
+          "nearbyStrings": [
+            "Add"
+          ],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_02a6",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "ClassImpl"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Boolean ServerSync.ConfigSync/RegisterRPCPatch/<<Postfix>g__WatchAdminListChanges|0_0>d::MoveNext()@IL_0030",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_adminList"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_002a",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_005a",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "GetPeer"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_0097",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_00c8",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String)",
+          "nearbyStrings": [
+            "m_remotePlayerId"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Postfix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>,ZNet,ZRpc)@IL_0055",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "GetPeer"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/<>c__DisplayClass2_0::<Postfix>g__SendBufferedData|0()@IL_002d",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/<>c__DisplayClass2_0::<Postfix>g__SendBufferedData|0()@IL_0067",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "GetPeer"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/<>c__DisplayClass2_0::<Postfix>g__SendBufferedData|0()@IL_00a4",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::PatchServerSync()@IL_0012",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "Awake"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::.cctor()@IL_0024",
+          "call": "System.Reflection.MethodInfo System.Type::GetMethod(System.String)",
+          "nearbyStrings": [
+            "StartSyncInvoke"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::Logout()@IL_001d",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_connectionStatus"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::RegisterAndCheckVersion(ZNetPeer,ZNet)@IL_001d",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "m_functions"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::RegisterAndCheckVersion(ZNetPeer,ZNet)@IL_0077",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "ServerSync VersionCheck",
+            "m_action"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        }
+      ],
+      "SocketContracts": [
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::IsConnected()",
+          "matches": [
+            "System.Boolean ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::IsConnected()",
+            "System.Boolean ZPlayFabSocket::IsConnected()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::Send(ZPackage)",
+          "matches": [
+            "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Send(ZPackage)",
+            "System.Void ZPlayFabSocket::Send(ZPackage)"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "ZPackage ISocket::Recv()",
+          "matches": [
+            "ZPackage ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Recv()",
+            "ZPackage ZPlayFabSocket::Recv()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Int32 ISocket::GetSendQueueSize()",
+          "matches": [
+            "System.Int32 ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetSendQueueSize()",
+            "System.Int32 ZPlayFabSocket::GetSendQueueSize()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Int32 ISocket::GetCurrentSendRate()",
+          "matches": [
+            "System.Int32 ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetCurrentSendRate()",
+            "System.Int32 ZPlayFabSocket::GetCurrentSendRate()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::IsHost()",
+          "matches": [
+            "System.Boolean ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::IsHost()",
+            "System.Boolean ZPlayFabSocket::IsHost()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::Dispose()",
+          "matches": [
+            "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Dispose()",
+            "System.Void ZPlayFabSocket::Dispose()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::GotNewData()",
+          "matches": [
+            "System.Boolean ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GotNewData()",
+            "System.Boolean ZPlayFabSocket::GotNewData()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::Close()",
+          "matches": [
+            "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Close()",
+            "System.Void ZPlayFabSocket::Close()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.String ISocket::GetEndPointString()",
+          "matches": [
+            "System.String ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetEndPointString()",
+            "System.String ZPlayFabSocket::GetEndPointString()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::GetAndResetStats(System.Int32&,System.Int32&)",
+          "matches": [
+            "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetAndResetStats(System.Int32&,System.Int32&)",
+            "System.Void ZNetStats::GetAndResetStats(System.Int32&,System.Int32&)"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::GetConnectionQuality(System.Single&,System.Single&,System.Int32&,System.Single&,System.Single&)",
+          "matches": [
+            "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetConnectionQuality(System.Single&,System.Single&,System.Int32&,System.Single&,System.Single&)",
+            "System.Void ZNetStats::GetConnectionQuality(System.Single&,System.Single&,System.Int32&,System.Single&,System.Single&)"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "ISocket ISocket::Accept()",
+          "matches": [
+            "ISocket ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Accept()",
+            "ISocket ZPlayFabSocket::Accept()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Int32 ISocket::GetHostPort()",
+          "matches": [
+            "System.Int32 ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetHostPort()",
+            "System.Int32 ZPlayFabSocket::GetHostPort()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::Flush()",
+          "matches": [
+            "System.Boolean ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Flush()",
+            "System.Boolean ZPlayFabSocket::Flush()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.String ISocket::GetHostName()",
+          "matches": [
+            "System.String ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::GetHostName()",
+            "System.String ZPlayFabSocket::GetHostName()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::VersionMatch()",
+          "matches": [
+            "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::VersionMatch()",
+            "System.Void ZPlayFabSocket::VersionMatch()"
+          ]
+        }
+      ],
+      "IsAdminDelegation": {
+        "matched": true,
+        "method": "System.Boolean ZNet::IsAdmin(System.String)",
+        "expectedIl": [
+          "ldarg.0",
+          "ldarg.0",
+          "ldfld SyncedList ZNet::m_adminList",
+          "ldarg.1",
+          "call System.Boolean ZNet::ListContainsId(SyncedList,System.String)",
+          "ret"
+        ],
+        "actualIl": [
+          "ldarg.0",
+          "ldarg.0",
+          "ldfld SyncedList ZNet::m_adminList",
+          "ldarg.1",
+          "call System.Boolean ZNet::ListContainsId(SyncedList,System.String)",
+          "ret"
+        ]
+      }
+    },
+    {
+      "Label": "server",
+      "ManagedDirectory": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed",
+      "OriginalGameAssembly": {
+        "path": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+        "bytes": 2569216,
+        "sha256": "648f3f8ed7b44c3d3cd612acd782743d9e03af7e60b7fe72d5827523e95505fd"
+      },
+      "DirectReferenceCount": 1193,
+      "HarmonyTargets": [
+        {
+          "patch": "System.Void ServerSync.ConfigSync/SnatchCurrentlyHandlingRPC::Prefix(ZRpc)",
+          "target": "System.Void ZRpc::HandlePackage(ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/RegisterRPCPatch::Postfix(ZNet)",
+          "target": "System.Void ZNet::Awake()",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/RegisterClientRPCPatch::Postfix(ZNet,ZNetPeer)",
+          "target": "System.Void ZNet::OnNewConnection(ZNetPeer)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            },
+            {
+              "name": "peer",
+              "type": "ZNetPeer",
+              "expected": "ZNetPeer"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/ResetConfigsOnShutdown::Postfix()",
+          "target": "System.Void ZNet::Shutdown(System.Boolean)",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": []
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)",
+          "target": "System.Void ZNet::RPC_PeerInfo(ZRpc,ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__state",
+              "status": "harmony-special-parameter-not-fully-validated",
+              "type": "System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            },
+            {
+              "name": "rpc",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Postfix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>,ZNet,ZRpc)",
+          "target": "System.Void ZNet::RPC_PeerInfo(ZRpc,ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__state",
+              "status": "harmony-special-parameter-not-fully-validated",
+              "type": "System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            },
+            {
+              "name": "rpc",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            }
+          ]
+        },
+        {
+          "patch": "System.Boolean ServerSync.ConfigSync/PreventSavingServerInfo::Prefix(BepInEx.Configuration.ConfigEntryBase,System.String&)",
+          "target": "System.String BepInEx.Configuration.ConfigEntryBase::GetSerializedValue()",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "BepInEx.Configuration.ConfigEntryBase",
+              "expected": "BepInEx.Configuration.ConfigEntryBase"
+            },
+            {
+              "name": "__result",
+              "type": "System.String",
+              "expected": "System.String"
+            }
+          ]
+        },
+        {
+          "patch": "System.Boolean ServerSync.ConfigSync/PreventConfigRereadChangingValues::Prefix(BepInEx.Configuration.ConfigEntryBase,System.String)",
+          "target": "System.Void BepInEx.Configuration.ConfigEntryBase::SetSerializedValue(System.String)",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "BepInEx.Configuration.ConfigEntryBase",
+              "expected": "BepInEx.Configuration.ConfigEntryBase"
+            },
+            {
+              "name": "value",
+              "type": "System.String",
+              "expected": "System.String"
+            }
+          ]
+        },
+        {
+          "patch": "System.Boolean ServerSync.VersionCheck::RPC_PeerInfo(ZRpc,ZNet)",
+          "target": "System.Void ZNet::RPC_PeerInfo(ZRpc,ZPackage)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "rpc",
+              "type": "ZRpc",
+              "expected": "ZRpc"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.VersionCheck::RegisterAndCheckVersion(ZNetPeer,ZNet)",
+          "target": "System.Void ZNet::OnNewConnection(ZNetPeer)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "peer",
+              "type": "ZNetPeer",
+              "expected": "ZNetPeer"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.VersionCheck::RemoveDisconnected(ZNetPeer,ZNet)",
+          "target": "System.Void ZNet::Disconnect(ZNetPeer)",
+          "access": "Public, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "peer",
+              "type": "ZNetPeer",
+              "expected": "ZNetPeer"
+            },
+            {
+              "name": "__instance",
+              "type": "ZNet",
+              "expected": "ZNet"
+            }
+          ]
+        },
+        {
+          "patch": "System.Void ServerSync.VersionCheck::ShowConnectionError(FejdStartup)",
+          "target": "System.Void FejdStartup::ShowConnectError(ZNet/ConnectionStatus)",
+          "access": "Private, HideBySig",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "injections": [
+            {
+              "name": "__instance",
+              "type": "FejdStartup",
+              "expected": "FejdStartup"
+            }
+          ]
+        }
+      ],
+      "KnownReflectionTargets": [
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "m_adminList",
+            "ValueType": "SyncedList",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "SyncedList ZNet::m_adminList",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "GetPeer",
+            "ValueType": "ZNetPeer",
+            "Static": false,
+            "Parameters": "ZRpc"
+          },
+          "actual": "ZNetPeer ZNet::GetPeer(ZRpc)",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, HideBySig",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "Awake",
+            "ValueType": "System.Void",
+            "Static": false,
+            "Parameters": ""
+          },
+          "actual": "System.Void ZNet::Awake()",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, HideBySig",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNet",
+            "Name": "m_connectionStatus",
+            "ValueType": "ZNet/ConnectionStatus",
+            "Static": true,
+            "Parameters": null
+          },
+          "actual": "ZNet/ConnectionStatus ZNet::m_connectionStatus",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, Static",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRoutedRpc",
+            "Name": "m_peers",
+            "ValueType": "System.Collections.Generic.List`1<ZNetPeer>",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Collections.Generic.List`1<ZNetPeer> ZRoutedRpc::m_peers",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRpc",
+            "Name": "m_socket",
+            "ValueType": "ISocket",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "ISocket ZRpc::m_socket",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZNetPeer",
+            "Name": "m_socket",
+            "ValueType": "ISocket",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "ISocket ZNetPeer::m_socket",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Public",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRpc",
+            "Name": "m_functions",
+            "ValueType": "System.Collections.Generic.Dictionary`2<System.Int32,ZRpc/RpcMethodBase>",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Collections.Generic.Dictionary`2<System.Int32,ZRpc/RpcMethodBase> ZRpc::m_functions",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZRpc/RpcMethod`1",
+            "Name": "m_action",
+            "ValueType": "System.Action`2<ZRpc,T>",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Action`2<ZRpc,T> ZRpc/RpcMethod`1::m_action",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Private",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "assembly_valheim",
+            "Type": "ZPlayFabSocket",
+            "Name": "m_remotePlayerId",
+            "ValueType": "System.String",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.String ZPlayFabSocket::m_remotePlayerId",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\assembly_valheim.dll",
+          "access": "Public, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "BepInEx",
+            "Type": "BepInEx.Configuration.ConfigDescription",
+            "Name": "<Tags>k__BackingField",
+            "ValueType": "System.Object[]",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Object[] BepInEx.Configuration.ConfigDescription::<Tags>k__BackingField",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "BepInEx",
+            "Type": "BepInEx.ThreadingHelper",
+            "Name": "StartSyncInvoke",
+            "ValueType": "System.Void",
+            "Static": false,
+            "Parameters": "System.Action"
+          },
+          "actual": "System.Void BepInEx.ThreadingHelper::StartSyncInvoke(System.Action)",
+          "assembly": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Valheim\\BepInEx\\core\\BepInEx.dll",
+          "access": "Public, HideBySig",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "mscorlib",
+            "Type": "System.Reflection.ParameterInfo",
+            "Name": "ClassImpl",
+            "ValueType": "System.Type",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "System.Type System.Reflection.ParameterInfo::ClassImpl",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\mscorlib.dll",
+          "access": "Family",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "mscorlib",
+            "Type": "System.Collections.Generic.KeyValuePair`2",
+            "Name": "key",
+            "ValueType": "TKey",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "TKey System.Collections.Generic.KeyValuePair`2::key",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\mscorlib.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        },
+        {
+          "specification": {
+            "Assembly": "mscorlib",
+            "Type": "System.Collections.Generic.KeyValuePair`2",
+            "Name": "value",
+            "ValueType": "TValue",
+            "Static": false,
+            "Parameters": null
+          },
+          "actual": "TValue System.Collections.Generic.KeyValuePair`2::value",
+          "assembly": "C:\\Users\\blizz\\.codex\\references\\valheim\\snapshots\\dedicated-server-b26266951-windows-x64-20261029T094713Z-depot-restored\\original\\valheim_server_Data\\Managed\\mscorlib.dll",
+          "access": "Private, InitOnly",
+          "matched": true
+        }
+      ],
+      "ReflectionCallSites": [
+        {
+          "location": "ServerSync.SyncedConfigEntry`1<T> ServerSync.ConfigSync::AddConfigEntry(BepInEx.Configuration.ConfigEntry`1<T>)@IL_0061",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "<Tags>k__BackingField"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "ServerSync.ConfigSync/ParsedConfigs ServerSync.ConfigSync::ReadConfigsFromPackage(ZPackage)@IL_00e9",
+          "call": "System.Type System.Type::GetType(System.String)",
+          "nearbyStrings": [],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Collections.IEnumerator ServerSync.ConfigSync::sendZPackage(System.Int64,ZPackage)@IL_003c",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_peers"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync::AddValueToZPackage(ZPackage,System.Object)@IL_00c2",
+          "call": "System.Reflection.FieldInfo[] System.Type::GetFields(System.Reflection.BindingFlags)",
+          "nearbyStrings": [],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_002b",
+          "call": "System.Reflection.FieldInfo[] System.Type::GetFields(System.Reflection.BindingFlags)",
+          "nearbyStrings": [],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_0179",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "key"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_0189",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "key",
+            "value"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_023b",
+          "call": "System.Reflection.MethodInfo System.Type::GetMethod(System.String)",
+          "nearbyStrings": [
+            "Add"
+          ],
+          "classification": "dynamic-or-unreviewed"
+        },
+        {
+          "location": "System.Object ServerSync.ConfigSync::ReadValueWithTypeFromZPackage(ZPackage,System.Type)@IL_02a6",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "ClassImpl"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Boolean ServerSync.ConfigSync/RegisterRPCPatch/<<Postfix>g__WatchAdminListChanges|0_0>d::MoveNext()@IL_0030",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_adminList"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_002a",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_005a",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "GetPeer"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_0097",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Prefix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>&,ZNet,ZRpc)@IL_00c8",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String)",
+          "nearbyStrings": [
+            "m_remotePlayerId"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin::Postfix(System.Collections.Generic.Dictionary`2<System.Reflection.Assembly,ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket>,ZNet,ZRpc)@IL_0055",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "GetPeer"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/<>c__DisplayClass2_0::<Postfix>g__SendBufferedData|0()@IL_002d",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/<>c__DisplayClass2_0::<Postfix>g__SendBufferedData|0()@IL_0067",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "GetPeer"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.ConfigSync/SendConfigsAfterLogin/<>c__DisplayClass2_0::<Postfix>g__SendBufferedData|0()@IL_00a4",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_socket"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::PatchServerSync()@IL_0012",
+          "call": "System.Reflection.MethodInfo HarmonyLib.AccessTools::DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])",
+          "nearbyStrings": [
+            "Awake"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::.cctor()@IL_0024",
+          "call": "System.Reflection.MethodInfo System.Type::GetMethod(System.String)",
+          "nearbyStrings": [
+            "StartSyncInvoke"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::Logout()@IL_001d",
+          "call": "System.Reflection.FieldInfo HarmonyLib.AccessTools::DeclaredField(System.Type,System.String)",
+          "nearbyStrings": [
+            "m_connectionStatus"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::RegisterAndCheckVersion(ZNetPeer,ZNet)@IL_001d",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "m_functions"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        },
+        {
+          "location": "System.Void ServerSync.VersionCheck::RegisterAndCheckVersion(ZNetPeer,ZNet)@IL_0077",
+          "call": "System.Reflection.FieldInfo System.Type::GetField(System.String,System.Reflection.BindingFlags)",
+          "nearbyStrings": [
+            "ServerSync VersionCheck",
+            "m_action"
+          ],
+          "classification": "known-name-near-call; consult exact-target checks"
+        }
+      ],
+      "SocketContracts": [
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::IsConnected()",
+          "matches": [
+            "System.Boolean ZPlayFabSocket::IsConnected()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::Send(ZPackage)",
+          "matches": [
+            "System.Void ZPlayFabSocket::Send(ZPackage)"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "ZPackage ISocket::Recv()",
+          "matches": [
+            "ZPackage ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Recv()",
+            "ZPackage ZPlayFabSocket::Recv()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Int32 ISocket::GetSendQueueSize()",
+          "matches": [
+            "System.Int32 ZPlayFabSocket::GetSendQueueSize()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Int32 ISocket::GetCurrentSendRate()",
+          "matches": [
+            "System.Int32 ZPlayFabSocket::GetCurrentSendRate()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::IsHost()",
+          "matches": [
+            "System.Boolean ZPlayFabSocket::IsHost()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::Dispose()",
+          "matches": [
+            "System.Void ZPlayFabSocket::Dispose()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::GotNewData()",
+          "matches": [
+            "System.Boolean ZPlayFabSocket::GotNewData()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::Close()",
+          "matches": [
+            "System.Void ZPlayFabSocket::Close()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.String ISocket::GetEndPointString()",
+          "matches": [
+            "System.String ZPlayFabSocket::GetEndPointString()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::GetAndResetStats(System.Int32&,System.Int32&)",
+          "matches": [
+            "System.Void ZNetStats::GetAndResetStats(System.Int32&,System.Int32&)"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::GetConnectionQuality(System.Single&,System.Single&,System.Int32&,System.Single&,System.Single&)",
+          "matches": [
+            "System.Void ZNetStats::GetConnectionQuality(System.Single&,System.Single&,System.Int32&,System.Single&,System.Single&)"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "ISocket ISocket::Accept()",
+          "matches": [
+            "ISocket ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket::Accept()",
+            "ISocket ZPlayFabSocket::Accept()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Int32 ISocket::GetHostPort()",
+          "matches": [
+            "System.Int32 ZPlayFabSocket::GetHostPort()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Boolean ISocket::Flush()",
+          "matches": [
+            "System.Boolean ZPlayFabSocket::Flush()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.String ISocket::GetHostName()",
+          "matches": [
+            "System.String ZPlayFabSocket::GetHostName()"
+          ]
+        },
+        {
+          "implementation": "ServerSync.ConfigSync/SendConfigsAfterLogin/BufferingSocket",
+          "requirement": "System.Void ISocket::VersionMatch()",
+          "matches": [
+            "System.Void ZPlayFabSocket::VersionMatch()"
+          ]
+        }
+      ],
+      "IsAdminDelegation": {
+        "matched": true,
+        "method": "System.Boolean ZNet::IsAdmin(System.String)",
+        "expectedIl": [
+          "ldarg.0",
+          "ldarg.0",
+          "ldfld SyncedList ZNet::m_adminList",
+          "ldarg.1",
+          "call System.Boolean ZNet::ListContainsId(SyncedList,System.String)",
+          "ret"
+        ],
+        "actualIl": [
+          "ldarg.0",
+          "ldarg.0",
+          "ldfld SyncedList ZNet::m_adminList",
+          "ldarg.1",
+          "call System.Boolean ZNet::ListContainsId(SyncedList,System.String)",
+          "ret"
+        ]
+      }
+    }
+  ],
+  "Failures": [],
+  "Unreviewed": [
+    {
+      "Kind": "reflection-readonly-field-runtime-write",
+      "Location": "client:reflection:ZPlayFabSocket::m_remotePlayerId",
+      "Detail": "System.String ZPlayFabSocket::m_remotePlayerId: field existence/type verified, existing reflective writes not executed."
+    },
+    {
+      "Kind": "reflection-readonly-field-runtime-write",
+      "Location": "client:reflection:BepInEx.Configuration.ConfigDescription::<Tags>k__BackingField",
+      "Detail": "System.Object[] BepInEx.Configuration.ConfigDescription::<Tags>k__BackingField: field existence/type verified, existing reflective writes not executed."
+    },
+    {
+      "Kind": "dynamic-reflection-candidates",
+      "Location": "client",
+      "Detail": "4 call sites need source/runtime review; see Targets.reflectionCallSites."
+    },
+    {
+      "Kind": "reflection-readonly-field-runtime-write",
+      "Location": "server:reflection:ZPlayFabSocket::m_remotePlayerId",
+      "Detail": "System.String ZPlayFabSocket::m_remotePlayerId: field existence/type verified, existing reflective writes not executed."
+    },
+    {
+      "Kind": "reflection-readonly-field-runtime-write",
+      "Location": "server:reflection:BepInEx.Configuration.ConfigDescription::<Tags>k__BackingField",
+      "Detail": "System.Object[] BepInEx.Configuration.ConfigDescription::<Tags>k__BackingField: field existence/type verified, existing reflective writes not executed."
+    },
+    {
+      "Kind": "dynamic-reflection-candidates",
+      "Location": "server",
+      "Detail": "4 call sites need source/runtime review; see Targets.reflectionCallSites."
+    }
+  ],
+  "Limitations": [
+    "Static metadata/IL validation only; neither the Unity/Mono game nor dedicated server executable was launched.",
+    "Public/protected API identity covers assembly identity, exposed type/base/interface/constraint identities, members, access/modifier flags, signatures and parameter defaults. Method bodies and arbitrary custom attributes are not an API compatibility proof.",
+    "Direct IL type/member references and declared field/method/local/base/interface types resolving into each original Managed directory are checked. This is not a complete IL verifier or whole-program reachability analysis.",
+    "Protected base constructors called directly on ldarg.0 by a derived constructor are accepted. Other protected access from derived callers is surfaced for manual review because the IL receiver constraint is not fully simulated. Friend-assembly or runtime access-check bypasses are not assumed.",
+    "Harmony target declarations, known injected parameters and named reflection targets are checked statically. Harmony patch application/order, native Unity calls, readonly reflective writes, object lifetime and network behavior require runtime validation.",
+    "Dynamic deserialization types, optional third-party integrations, and generic reflection over arbitrary user data cannot be exhaustively resolved by static inspection. Reflection call-site candidates are retained for review."
+  ],
+  "Passed": true
+}

@@ -1,0 +1,6 @@
+[mono-x64] pointer-size=8 runtime=C:\Program Files\Unity 6000.0.46f1\Editor\Data\MonoBleedingEdge\EmbedRuntime\mono-2.0-sgen.dll
+﻿FireProjectileBurst_Prefix=17BAA2C31BB6E9DD4DA2F3B85E3726AAB53FD4AC8CD7D9F2835E4EBC91A97538
+TeleportTo_Postfix=21E126B35A09509ADAEE71DB5440E8B20306EEC82EAB236D25ED38564C200AAF
+PASS: 37 assertions; original game DLLs loaded unchanged, real Harmony replacement/restoration exercised on managed fixtures. Unity/MagicPlugin gameplay not run.
+﻿[mono-x64] mono_main returned after runtime cleanup: exit=0
+NativeHostExit=0

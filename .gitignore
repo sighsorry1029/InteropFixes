@@ -7,3 +7,4 @@ riderModule.iml
 .vs/
 *.sln.DotSettings.user
 Thunderstore/*_v*.zip
+refer/installed-standalone-*/
