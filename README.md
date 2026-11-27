@@ -1,15 +1,12 @@
 # InteropFixes
 
-Compatibility fixes for Valheim mods.
+InteropFixes applies compatibility fixes for the mods you have installed. Install it through your mod manager on the client, host or dedicated server where you want the fixes to run. Setup is automatic.
 
-## Features
+## Compatibility
 
-- **MagicPlugin:** Prevents duplicate projectile configuration callbacks and handles summon teleports and stale creature references.
-- **MagicPlugin visual effects:** Reduces unnecessary network objects when the server and all connected players support the cosmetic effects.
-- **VNEI:** Looks up the actual hovered item instead of relying only on its displayed name.
-- **Path of Valheiman + VNEI:** Avoids unnecessary type-loading warnings while PoV checks for optional BetterArchery, ExtraSlots and SeneaLUI integrations. Existing equipment and recipe behavior is preserved.
-- **EpicLoot + AzuCraftyBoxes:** Saves container inventory changes after supported enchanting, augmenting, disenchanting and rune actions.
+- **VNEI** uses the item under your cursor for recipe lookup, even when two items have the same display name.
+- **EpicLoot and AzuCraftyBoxes** save changes to gear in nearby chests after enchanting, augmenting, disenchanting or using runes. This works with closed, standard chests your client controls.
+- **Path of Valheiman** checks for BetterArchery, ExtraSlots and SeneaLUI without triggering VNEI warnings about missing optional mods.
+- **MagicPlugin** fixes teleporting with summons and errors from creatures that have already despawned. Firing a magic weapon no longer registers duplicate listeners for projectile settings. In multiplayer, the game draws supported spell effects locally when the server and all connected players support the optimization.
 
-Each integration runs independently and activates only when the relevant mods are supported.
-
-General Valheim runtime fixes are maintained in **Blasted**.
+[GitHub repository](https://github.com/sighsorry1029/InteropFixes)

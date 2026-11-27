@@ -1,8 +1,8 @@
 {
   "name": "InteropFixes",
-  "version_number": "1.0.3",
+  "version_number": "1.0.4",
   "website_url": "https://discord.gg/jkcJCq2sK5",
-  "description": "Compatibility fixes for MagicPlugin, VNEI item lookup and EpicLoot/AzuCraftyBoxes container inventory saving.",
+  "description": "Find the right recipe in VNEI and keep EpicLoot changes to gear stored in nearby chests with AzuCraftyBoxes. InteropFixes also fixes MagicPlugin summon teleports and prevents warnings when Path of Valheiman checks for optional integrations.",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.2360"
   ]

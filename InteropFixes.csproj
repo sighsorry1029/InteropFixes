@@ -35,7 +35,7 @@
     <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(DeployPath)\$(TargetFileName)" />
     <Message Importance="High" Text="Deployed final Debug DLL: $(DeployPath)\$(TargetFileName)" />
   </Target>
-    <Target Name="GetAssemblyVersion">
+    <Target Name="PrepareThunderstorePackageProperties">
         <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
             <Output TaskParameter="Assemblies" ItemName="PackageAssemblyIdentity"/>
         </GetAssemblyIdentity>
@@ -56,7 +56,7 @@
     </Target>
     <Target
         Name="UpdateManifestVersion"
-        DependsOnTargets="GetAssemblyVersion"
+        DependsOnTargets="PrepareThunderstorePackageProperties"
         Condition=" ('$(Configuration)|$(Platform)' == 'Release|AnyCPU') And ('$(OS)' == 'Windows_NT') ">
         <Error Text="manifest.json not found in Thunderstore directory." Condition="!Exists('$(ThunderstorePackageRoot)\manifest.json')"/>
         <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)UpdateManifest.ps1&quot; -manifestFile &quot;$(ThunderstorePackageRoot)\manifest.json&quot; -versionString &quot;$(PackageVersion)&quot;"/>
@@ -64,7 +64,7 @@
     <Target
         Name="MakeThunderstorePackage"
         AfterTargets="Build"
-        DependsOnTargets="GetAssemblyVersion;UpdateManifestVersion"
+        DependsOnTargets="PrepareThunderstorePackageProperties;UpdateManifestVersion"
         Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <Error Text="InteropFixes.dll not found in the Release output directory." Condition="!Exists('$(TargetPath)')"/>
         <Error Text="README.md not found in the project root." Condition="!Exists('$(ProjectDir)README.md')"/>

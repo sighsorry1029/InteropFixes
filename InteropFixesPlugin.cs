@@ -24,7 +24,7 @@ public sealed class InteropFixesPlugin : BaseUnityPlugin
 {
     internal const string ModGuid = "sighsorry.InteropFixes";
     internal const string ModName = "InteropFixes";
-    internal const string ModVersion = "1.0.3";
+    internal const string ModVersion = "1.0.4";
     internal const string MagicPluginGuid = "blacks7ar.MagicPlugin";
     internal const string VneiGuid = "com.maxsch.valheim.vnei";
     internal const string PathOfValheimanGuid = "treextr.pathofvalheiman";

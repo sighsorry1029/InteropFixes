@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.4
+
+- VNEI now opens recipes for the inventory item under your cursor, including items that share a display name.
+- EpicLoot now saves changes to gear in nearby AzuCraftyBoxes containers after enchanting, augmenting, disenchanting and rune actions.
+- Fixed VNEI warnings triggered when Path of Valheiman checks for BetterArchery, ExtraSlots or SeneaLUI.
+- Supported MagicPlugin spell effects can now play locally when the server and all connected players support them, reducing network traffic.
+- The standalone VNEI Item Lookup Fix and EpicLoot CraftyBoxes Bridge take precedence over their matching built-in fixes. General creature cleanup is now handled by Blasted.
+
 ## 1.0.3
 
 - Fixed followed-summon teleport compatibility on standard Valheim assemblies by accessing `Character.m_nview` and `Tameable.m_monsterAI` through validated Harmony field references.
